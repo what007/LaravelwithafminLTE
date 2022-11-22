@@ -3,8 +3,9 @@
 
 <div class="card-body">
 
-    <a href="{{route('personalcontact.create')}}">
-        <button type="button" class="btn btn-block btn-success">Add</button>
+    <a href="{{route('staff.create')}}" style="padding-top: 50px">
+        <button type="button" class="btn btn-block btn-success" style="background: lightgreen">Add</button>
+        <p class="mb-10"></p>
     </a>
 
     <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -17,16 +18,20 @@
                 <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
                     aria-describedby="example2_info">
                     <thead>
-                        <tr role="row" style="background: rgb(222, 188, 237)" >
+                        <tr role="row" style="background: rgb(222, 188, 237)">
                             <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                 aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">
-                                name</th>
+                                Name</th>
                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                aria-label="Browser: activate to sort column ascending">email</th>
+                                aria-label="Browser: activate to sort column ascending">E-mail</th>
                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                aria-label="Platform(s): activate to sort column ascending">phone</th>
+                                aria-label="Platform(s): activate to sort column ascending">Phone</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="Platform(s): activate to sort column ascending">Position</th>
                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                 aria-label="Engine version: activate to sort column ascending">Image</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="CSS grade: activate to sort column ascending"></th>
                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                 aria-label="CSS grade: activate to sort column ascending"></th>
                         </tr>
@@ -39,97 +44,31 @@
                             <td class="sorting_1">{{$info->name}}</td>
                             <td>{{$info->email}}</td>
                             <td>{{$info->phone}}</td>
+                            <td>{{$info->position}}</td>
                             <td><img src="{{asset('images/'.$info->image)}}" width="60px" height="50px">                             
                             </td>
-                            <td>
-                                <a class="btn btn-app" href="{{route('personalcontact.create')}}">
-                                        {{-- <span class="badge bg-purple">891</span> --}}
+                            {{-- <td>
+                                <a class="btn btn-app" href="{{route('staff.create')}}">
+
                                         <i class="fas fa-users"></i> Add
                                     </a>
-                            </td>
+                            </td> --}}
                             <td>
-                                    <a class="btn btn-app" href="{{route('personalcontact.edit', $info->id)}}">
+                                    <a class="btn btn-app" href="{{route('staff.edit', $info->id)}}" style="background:#fed8b1; position: center">
                                         <i class="fas fa-edit"></i> Edit
                                     </a> 
                             </td>
                             <td>
-                                <form action="{{route('personalcontact.destroy', $info->id)}}" method="POST">
+                                <form action="{{route('staff.destroy', $info->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                    <button class="btn btn-app">
-                                        <i class="fas fa-delete"></i> Delete
+                                    <button class="btn btn-app" style="background: #ffcccb">
+                                        <i class="fas fa-delete"></i><b> Delete <b>
                                     </button>
                                 </form>
                             </td>
-
-                            {{--
-                        </tr>
-                        <tr role="row" class="even">
-                            <td class="sorting_1">Gecko</td>
-                            <td>Firefox 1.5</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td class="sorting_1">Gecko</td>
-                            <td>Firefox 2.0</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                        </tr>
-                        <tr role="row" class="even">
-                            <td class="sorting_1">Gecko</td>
-                            <td>Firefox 3.0</td>
-                            <td>Win 2k+ / OSX.3+</td>
-                            <td>1.9</td>
-                            <td>A</td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td class="sorting_1">Gecko</td>
-                            <td>Camino 1.0</td>
-                            <td>OSX.2+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                        </tr>
-                        <tr role="row" class="even">
-                            <td class="sorting_1">Gecko</td>
-                            <td>Camino 1.5</td>
-                            <td>OSX.3+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td class="sorting_1">Gecko</td>
-                            <td>Netscape 7.2</td>
-                            <td>Win 95+ / Mac OS 8.6-9.2</td>
-                            <td>1.7</td>
-                            <td>A</td>
-                        </tr>
-                        <tr role="row" class="even">
-                            <td class="sorting_1">Gecko</td>
-                            <td>Netscape Browser 8</td>
-                            <td>Win 98SE+</td>
-                            <td>1.7</td>
-                            <td>A</td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td class="sorting_1">Gecko</td>
-                            <td>Netscape Navigator 9</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                        </tr>
-                        <tr role="row" class="even"> --}}
-                            {{-- <td class="sorting_1">Gecko</td>
-                            <td>Mozilla 1.0</td>
-                            <td>Win 95+ / OSX.1+</td>
-                            <td>1</td>
-                            <td>A</td> --}}
                         </tr>
                         @endforeach
-
-
                     </tbody>
                     <tfoot>
                         {{-- <tr>
@@ -141,14 +80,17 @@
                         </tr> --}}
                     </tfoot>
                 </table>
+
+                {{$data->links()}}
             </div>
         </div>
+
         <div class="row">
-            <div class="col-sm-12 col-md-5">
+            {{-- <div class="col-sm-12 col-md-5">
                 <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57
                     entries</div>
-            </div>
-            <div class="col-sm-12 col-md-7">
+            </div> --}}
+            {{-- <div class="col-sm-12 col-md-7">
                 <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
                     <ul class="pagination">
                         <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
@@ -170,7 +112,7 @@
                                 aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

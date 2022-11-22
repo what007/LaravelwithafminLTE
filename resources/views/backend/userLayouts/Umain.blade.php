@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  @include('backend.layouts.head')
+  @include('backend.userlayouts.Uhead')
 
 
 </head>
@@ -56,7 +56,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include('backend.layouts.sidebar')
+    @include('backend.userLayouts.Usidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -666,7 +666,7 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    @include('backend.layouts.footer')
+    @include('backend.userLayouts.Ufooter')
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -675,7 +675,7 @@
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
-  @include('backend.layouts.foot')
+  @include('backend.userLayouts.Ufoot')
 </body>
 
 </html>

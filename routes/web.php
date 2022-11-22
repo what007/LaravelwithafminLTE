@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,12 +23,27 @@ Route::get('/adminpanel', function () {
     return view('backend/layouts/main');
 });
 
- Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/adminpanel/personalcontact', App\Http\Controllers\PersonalContactController::class);
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/adminpanel/staff', App\Http\Controllers\StaffController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/adminpanel/leave', App\Http\Controllers\LeaveController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/adminpanel/viewleave', App\Http\Controllers\ViewLeaveController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/adminpanel/adminviewleave', App\Http\Controllers\AdminViewLeaveController::class);
 //Route::resource('/adminpanel/personalcontact', 'PersonalContactController');
 
 //Route::get('adminpanel/personalcontact', 'PersonalContactController@index')->name('personalcontact.index');
@@ -41,3 +57,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+route::get('/redirect', [HomeController::class, 'redirect']);
