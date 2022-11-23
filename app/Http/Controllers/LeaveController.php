@@ -15,8 +15,8 @@ class LeaveController extends Controller
     public function index()
     {
       //  $data = Leave::all();
-      $data = Leave::paginate(2);
-     // $data = Leave::where('email', auth()->user()->email)->paginate(2);
+    //  $data = Leave::paginate(2);
+      $data = Leave::where('email', auth()->user()->email)->paginate(2);
       return view('backend.leave.indexLeave', compact('data'));
     }
 

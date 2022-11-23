@@ -19,14 +19,16 @@
                     <div class="col-md-6 col-sm12">
                         <div class="form-group">
                             <label>Name </label>
-                            <input name="name" type="text" class="form-control wizard-required" required="true" value="{{ auth()->user()->name }}" disabled>
+                            <input name="name" type="text" class="form-control wizard-required" required="true"
+                                value="{{ auth()->user()->name }}" disabled>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input name="email" type="text" class="form-control" required="true"  value="{{ auth()->user()->email }}" disabled>
+                            <input name="email" type="text" class="form-control" required="true"
+                                value="{{ auth()->user()->email }}" disabled>
                         </div>
                     </div>
 
@@ -54,8 +56,8 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label>Start Leave Date :</label>
-                            <input id="date_from" onchange="setEndDate()" name="start_leave" type="date" class="form-control" required="true"
-                                autocomplete="off=">
+                            <input id="date_from" onchange="setEndDate()" name="start_leave" type="date"
+                                class="form-control" required="true" autocomplete="off=">
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
@@ -127,17 +129,16 @@
 
         if (mm < 10) {
             mm = '0' + mm;
-        } 
-            
+        }
+
         today = yyyy + '-' + mm + '-' + dd;
         document.getElementById("date_from").setAttribute("min", today);
         document.getElementById("date_to").setAttribute("min", today);
 
-        function setEndDate()
-        {
+        function setEndDate() {
             var date_from_val = $("#date_from").val();
-        //  alert(date_from_val);
-            document.getElementById("date_to").setAttribute("min", today);
+            //  alert(date_from_val);
+            document.getElementById("date_to").setAttribute("min", date_from_val);
         }
     </script>
 @endsection

@@ -17,7 +17,7 @@ class StaffController extends Controller
     public function index()
     {
         // $data = Staff::get();
-       $data = Staff::paginate(2);
+       $data = Staff::paginate(3);
       // return $data = staff::select('name', 'email', 'phone', 'position', 'image')->paginate(5);
         return view('backend.staff.indexStaff', compact('data'));
 
@@ -108,8 +108,10 @@ class StaffController extends Controller
             $data->image = $image;
         }
 
-        $data->name = $request->name;
-        $data->email = $request->email;
+
+
+   //     $data->name = $request->name;
+  //      $data->email = $request->email;
         $data->phone = $request->phone;
         $data->position = $request->position;
 
