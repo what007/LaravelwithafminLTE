@@ -183,9 +183,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $info)
-                                @if ('Controllers.LeaveController.store()' > 0)
-                                    
+                            @if (count($data) > 0)
+                                @foreach ($data as $info)
                                     <tr role="row" class="odd">
                                         <td class="sorting_1">{{ $info->name }}</td>
                                         <td>{{ $info->email }}</td>
@@ -270,11 +269,11 @@
                             <td>1</td>
                             <td>A</td> --}}
                                     </tr>
-                                @else
-                                    <td>{{ 'No data available in table' }}</td>
-                                    
-                                @endif
-                            @endforeach
+                                @endforeach
+                            @else
+                                <td valign="top" colspan="7" style="text-align: center;">
+                                    {{ 'No data available in table' }}</td>
+                            @endif
 
 
                         </tbody>
