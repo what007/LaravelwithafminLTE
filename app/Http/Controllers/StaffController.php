@@ -17,11 +17,10 @@ class StaffController extends Controller
     public function index()
     {
         // $data = Staff::get();
-       $data = Staff::paginate(3);
-      // return $data = staff::select('name', 'email', 'phone', 'position', 'image')->paginate(5);
+        $data = Staff::with(['user'])->paginate(3);
+        // dd($data);
+        // return $data = staff::select('name', 'email', 'phone', 'position', 'image')->paginate(5);
         return view('backend.staff.indexStaff', compact('data'));
-
-        
     }
 
     /**
@@ -42,28 +41,27 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-            //dd($request->image->getMimeType());
+        //dd($request->image->getMimeType());
 
-            $image = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images'), $image);
-    
-            $user = User::create([
-                'name' => $request['name'],
-                'email' => $request['email'],
-                'password' => Hash::make('12345678'),
-            ]);
+        $image = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $image);
 
-            Staff::create(
-                [
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'position' => $request['position'],
-                    'phone' => $request['phone'],
-                    'image' => $image,
-                ]
-            );
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make('12345678'),
+        ]);
 
-            return redirect()->route('staff.index')->with('success', 'successfully done');
+        Staff::create(
+            [
+                'user_id' => $user->id,
+                'position' => $request['position'],
+                'phone' => $request['phone'],
+                'image' => $image,
+            ]
+        );
+
+        return redirect()->route('staff.index')->with('success', 'successfully done');
     }
 
     /**
@@ -110,8 +108,8 @@ class StaffController extends Controller
 
 
 
-   //     $data->name = $request->name;
-  //      $data->email = $request->email;
+        //     $data->name = $request->name;
+        //      $data->email = $request->email;
         $data->phone = $request->phone;
         $data->position = $request->position;
 
@@ -128,16 +126,25 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        $data = Staff::find($id);
-        $image = $data->image;
+        $staff = Staff::find($id);
 
-        $filepath = public_path('images/');
-        $imagepath = $filepath.$image;
+        //$data = User::find($id);
+        
+        
+        $data = User::where('id', $staff->user_id)->firstOrFail();
+       // $data = User::firstOrFail($id);
+        // $image = $data->image;
 
-        //dd($old_image);
-        if (file_exists($imagepath)) {
-            @unlink($imagepath);
-        }
+
+        // $filepath = public_path('images/');
+
+        
+        // $imagepath = $filepath . $image;
+
+        // //dd($old_image);
+        // if (file_exists($imagepath)) {
+        //     @unlink($imagepath);
+        // }
 
         $data->delete();
 

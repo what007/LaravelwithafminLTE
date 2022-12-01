@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Staff extends Model
 {
-    //use HasFactory;
+    use HasFactory;
     protected $fillable=[
-        'name', 'email', 'phone', 'position', 'image'
+        'user_id', 'phone', 'position', 'image'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

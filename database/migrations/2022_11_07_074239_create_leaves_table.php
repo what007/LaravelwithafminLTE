@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('leaves', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
+            $table->unsignedBigInteger('staff_id')->nullable();
             $table->string('leave_type')->nullable();
             $table->date('start_leave')->nullable();
             $table->date('end_leave')->nullable();
             $table->string('leave_reason')->nullable();
+            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
             $table->timestamps();
         });
     }

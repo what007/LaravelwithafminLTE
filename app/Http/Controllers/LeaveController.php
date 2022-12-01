@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Leave;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
 class LeaveController extends Controller
@@ -14,10 +15,21 @@ class LeaveController extends Controller
      */
     public function index()
     {
-      //  $data = Leave::all();
-    //  $data = Leave::paginate(2);
-      $data = Leave::where('email', auth()->user()->email)->paginate(2);
-      return view('backend.leave.indexLeave', compact('data'));
+        //  $data = Leave::all();
+        //  $data = Leave::paginate(2);
+        $staff = Staff::where('user_id', auth()->user()->id)->first();
+
+    
+        
+
+        $data = Leave::with(
+            [
+                'staff',
+                'staff.user',
+            ]
+        )->where('staff_id', $staff->id)->paginate(2);
+        //dd($data);
+        return view('backend.leave.indexLeave', compact('data'));
     }
 
     /**
@@ -38,17 +50,18 @@ class LeaveController extends Controller
      */
     public function store(Request $request)
     {
-         Leave::create([
-             'name' => auth()->user()->name,
-             'email' => auth()->user()->email,
-             'leave_type' => $request['leave_type'],
-             'start_leave' => $request['start_leave'],
-             'end_leave' => $request['end_leave'],
-             'leave_reason' => $request['leave_reason'],
+        $staff = Staff::where('user_id', auth()->user()->id)->first();
 
-         ]);
- 
-         return redirect()->route('leave.index')->with('success', 'successfully done');
+        Leave::create(
+            [
+                'staff_id' => $staff->id,
+                'leave_type' => $request['leave_type'],
+                'start_leave' => $request['start_leave'],
+                'end_leave' => $request['end_leave'],
+                'leave_reason' => $request['leave_reason'],
+            ]
+        );
+        return redirect()->route('leave.index')->with('success', 'successfully done');
     }
 
     /**

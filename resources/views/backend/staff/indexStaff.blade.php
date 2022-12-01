@@ -41,8 +41,8 @@
                             @if (count($data) > 0)
                                 @foreach ($data as $info)
                                     <tr role="row" class="odd">
-                                        <td class="sorting_1">{{ $info->name }}</td>
-                                        <td>{{ $info->email }}</td>
+                                        <td class="sorting_1">{{ $info->user->name }}</td>
+                                        <td>{{ $info->user->email }}</td>
                                         <td>{{ $info->phone }}</td>
                                         <td>{{ $info->position }}</td>
                                         <td><img src="{{ asset('images/' . $info->image) }}" width="60px" height="50px">

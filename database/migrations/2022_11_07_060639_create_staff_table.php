@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('phone')->nullable();
             $table->string('position')->nullable();
+            $table->string('total_leave')->nullable();
+            $table->string('leave_balance')->nullable();
             $table->text('image')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

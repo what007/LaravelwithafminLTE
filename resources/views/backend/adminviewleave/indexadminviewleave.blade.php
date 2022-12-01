@@ -36,8 +36,8 @@
                             @if (count($data) > 0)
                                 @foreach ($data as $info)
                                     <tr role="row" class="odd">
-                                        <td class="sorting_1">{{ $info->name }}</td>
-                                        <td>{{ $info->email }}</td>
+                                        <td class="sorting_1">{{ $info->staff->user->name }}</td>
+                                        <td>{{ $info->staff->user->email }}</td>
                                         <td>{{ $info->leave_type }}</td>
                                         <td>{{ $info->start_leave }}</td>
                                         <td>{{ $info->end_leave }}</td>

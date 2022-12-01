@@ -7,17 +7,17 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form onsubmit="phonenumber(phone)" id="myform" role="form" action="{{route('staff.update', $data->id)}}" method="POST" enctype="multipart/form-data">
+    <form onsubmit="phonenumber(phone)" role="form" action="{{route('staff.update', $data->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
-                <input type="text" name="name" value="{{$data->name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter name" disabled>
+                <input type="text" name="name" value="{{ $data->user->name }}" class="form-control" id="exampleInputEmail1" placeholder="Enter name" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Email</label>
-                <input type="text" name="email" value="{{$data->email}}" class="form-control" id="exampleInputPassword1" placeholder="Email" disabled>
+                <input type="text" name="email" value="{{$data->user->email}}" class="form-control" id="exampleInputPassword1" placeholder="Email" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Phone</label>

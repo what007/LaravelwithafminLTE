@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Leave;
+use App\Models\Staff;
 
 class ViewLeaveController extends Controller
 {
@@ -14,10 +15,23 @@ class ViewLeaveController extends Controller
      */
     public function index()
     {
-       // $data = Leave::all();
-       // $data = Leave::paginate(2);
-       $data = Leave::where('email', auth()->user()->email)->paginate(2);
-        return view('backend.viewleave.indexviewLeave', compact('data'));
+
+        $staff = Staff::where('user_id', auth()->user()->id)->first();
+
+    
+        
+
+        $data = Leave::with(
+            [
+                'staff',
+                'staff.user',
+            ]
+        )->where('staff_id', $staff->id)->paginate(2);
+        //dd($data);
+    //    // $data = Leave::all();
+    //    // $data = Leave::paginate(2);
+    //    $data = Leave::where('id', auth()->user()->id)->paginate(2);
+       return view('backend.viewleave.indexviewLeave', compact('data'));
     }
 
     /**
