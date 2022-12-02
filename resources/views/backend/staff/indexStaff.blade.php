@@ -9,13 +9,13 @@
         </a>
 
         <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-sm-12 col-md-6"></div>
                 <div class="col-sm-12 col-md-6"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+            </div> --}}
+            <div class="card">
+                <div class="card-body p-0">
+                    <table id="example2" class="table table-striped" role="grid"
                         aria-describedby="example2_info">
                         <thead>
                             <tr role="row" style="background: rgb(222, 188, 237)">
@@ -30,11 +30,13 @@
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="Platform(s): activate to sort column ascending">Position</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Platform(s): activate to sort column ascending">Allocated Leave</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="Engine version: activate to sort column ascending">Image</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                    aria-label="CSS grade: activate to sort column ascending"></th>
+                                    aria-label="CSS grade: activate to sort column ascending">Edit</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                    aria-label="CSS grade: activate to sort column ascending"></th>
+                                    aria-label="CSS grade: activate to sort column ascending">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,7 +46,8 @@
                                         <td class="sorting_1">{{ $info->user->name }}</td>
                                         <td>{{ $info->user->email }}</td>
                                         <td>{{ $info->phone }}</td>
-                                        <td>{{ $info->position }}</td>
+                                        <td>{{ $info->select_position }}</td>
+                                        <td>{{ $info->allocated_leave }}</td>
                                         <td><img src="{{ asset('images/' . $info->image) }}" width="60px" height="50px">
                                         </td>
                                         {{-- <td>
@@ -90,12 +93,12 @@
                 </div>
             </div>
 
-            <div class="row">
-                {{-- <div class="col-sm-12 col-md-5">
+            {{-- <div class="row">
+                 <div class="col-sm-12 col-md-5">
                 <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57
                     entries</div>
-            </div> --}}
-                {{-- <div class="col-sm-12 col-md-7">
+            </div> 
+                 <div class="col-sm-12 col-md-7">
                 <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
                     <ul class="pagination">
                         <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
@@ -117,8 +120,8 @@
                                 aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
                     </ul>
                 </div>
+            </div> 
             </div> --}}
-            </div>
         </div>
     </div>
 

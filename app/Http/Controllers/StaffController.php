@@ -55,8 +55,9 @@ class StaffController extends Controller
         Staff::create(
             [
                 'user_id' => $user->id,
-                'position' => $request['position'],
                 'phone' => $request['phone'],
+                'select_position' => $request['select_position'],
+                'allocated_leave' => $request['allocated_leave'],
                 'image' => $image,
             ]
         );
@@ -111,7 +112,8 @@ class StaffController extends Controller
         //     $data->name = $request->name;
         //      $data->email = $request->email;
         $data->phone = $request->phone;
-        $data->position = $request->position;
+        $data->select_position = $request->select_position;
+        $data->allocated_leave = $request->allocated_leave;
 
         $data->save();
 

@@ -9,7 +9,7 @@ class Staff extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'user_id', 'phone', 'position', 'image'
+        'user_id', 'phone', 'select_position', 'allocated_leave', 'image'
     ];
 
     public function user()

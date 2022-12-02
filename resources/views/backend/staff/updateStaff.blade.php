@@ -23,9 +23,29 @@
                 <label for="exampleInputPassword1">Phone</label>
                 <input type="text" id="phone" name="phone" value="{{$data->phone}}" class="form-control" placeholder="Phone">
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Position</label>
                 <input type="text" name="position" value="{{$data->position}}" class="form-control" id="exampleInputPassword1" placeholder="Position">
+            </div> --}}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="select_position">Select Position</label>
+                        <select onselect="alert('hi')" name="select_position" class="custom-select form-control" required="true" autocomplete="off">
+                            <option selected disabled>Select Position</option>
+                            <option value="Intern">Intern</option>
+                            <option value="Executive">Executive</option>
+                            <option value="Manager">Manager</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="allocated_leave">Allocated Leave</label>
+                        <input type="text" name="allocated_leave" class="form-control" id="allocated_leave" placeholder="Allocated Leave">
+                    </div>
+                </div>
             </div>
 
             <div class="form-group row">

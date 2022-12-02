@@ -11,8 +11,8 @@
             @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="name"
                         placeholder="Enter name">
                 </div>
                 <div class="form-group">
@@ -25,15 +25,27 @@
                     <input type="text" id="phone" name="phone" class="form-control" id="exampleInputPassword1"
                         placeholder="Phone">
                 </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Position</label>
-                    <input type="text" name="position" class="form-control" id="exampleInputPassword1"
-                        placeholder="Position">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="select_position">Select Position</label>
+                            <select onchange="changeAllocatedValue()" id="select_position" name="select_position" class="custom-select form-control sel_1" required="true" autocomplete="off">
+                                <option selected disabled>Select Position</option>
+                                <option value="1">Intern</option>
+                                <option value="2">Executive</option>
+                                <option value="3">Manager</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="allocated_leave">Allocated Leave</label>
+                            <input type="text" name="allocated_leave" class="form-control" id="allocated_leave" readonly placeholder="Allocated Leave">
+                        </div>
+                    </div>
                 </div>
-
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Image</label>
+                    <label>Image</label>
                     <div class="col-lg-10">
                         <input type="file" class="form-control h-auto" name="image">
                     </div>
@@ -73,6 +85,40 @@
                    // $(selector).attr(attributeName);
                 }
             }
+    </script>
+
+    <script>
+        changeAllocatedValue = () => {
+
+            let positionValue = document.getElementById("select_position").value;
+
+            console.log(positionValue);
+
+            if(positionValue == 1)
+            {
+                document.getElementById("allocated_leave").value = "10";
+            } else if (positionValue == 2) {
+                document.getElementById("allocated_leave").value = "20";
+            } else if (positionValue == 3) {
+                document.getElementById("allocated_leave").value = "30";
+            }
+            // let select_position_variable = $("#select_position").val();
+
+            // console.log(select_position_variable);
+
+            // let positionValue = $("#select_position").val();
+
+            // console.log(positionValue);
+
+            // if(positionValue == 1)
+            // {
+            //     $("allocated_leave").val("10");
+            // } else if (positionValue == 2) {
+            //     $("allocated_leave").val("10");
+            // } else if (positionValue == 3) {
+            //     $("allocated_leave").val("10");
+            // }
+        }
     </script>
     
 @endsection
